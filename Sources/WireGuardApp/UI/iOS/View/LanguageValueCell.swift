@@ -1,0 +1,375 @@
+// SPDX-License-Identifier: MIT
+// Copyright © 2018-2019 pGate LLC. All Rights Reserved.
+#if !os(macOS)
+import UIKit
+
+
+class LanguageValueCell: UITableViewCell {
+
+    var bundle = Bundle()
+
+    var isChinese = false
+
+    let keyLabel: UILabel = {
+        let keyLabel = UILabel()
+        keyLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        keyLabel.adjustsFontForContentSizeCategory = true
+        if #available(iOS 13.0, *) {
+            keyLabel.textColor = .label
+        } else {
+            keyLabel.textColor = .black
+        }
+        keyLabel.textAlignment = .left
+        return keyLabel
+    }()
+
+    let secondKeyLabel: UILabel = {
+        let secondKeyLabel = UILabel()
+        secondKeyLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        secondKeyLabel.adjustsFontForContentSizeCategory = true
+        if #available(iOS 13.0, *) {
+            secondKeyLabel.textColor = .label
+        } else {
+            secondKeyLabel.textColor = .black
+        }
+        secondKeyLabel.textAlignment = .left
+        return secondKeyLabel
+    }()
+
+//    let valueLabelScrollView: UIScrollView = {
+//        let scrollView = UIScrollView(frame: .zero)
+//        scrollView.isDirectionalLockEnabled = true
+//        scrollView.showsHorizontalScrollIndicator = false
+//        scrollView.showsVerticalScrollIndicator = false
+//        return scrollView
+//    }()
+
+    let languageSwitch: UISwitch = {
+        let languageSwitch = UISwitch()
+        if let lang = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String] {
+            if let code = lang.first {
+                languageSwitch.isOn = code.contains("en") ? true : false
+            }
+        }
+        return languageSwitch
+    }()
+
+    let secondLanguageSwitch: UISwitch = {
+        let secondLanguageSwitch = UISwitch()
+        if let lang = UserDefaults.standard.value(forKey: "AppleLanguages") as? [String] {
+            if let code = lang.first {
+                secondLanguageSwitch.isOn = code.contains("zh-Hans") ? true : false
+            }
+        }
+        return secondLanguageSwitch
+    }()
+
+    var onTapped: ((_ switchh: UISwitch) -> Void)?
+
+    @objc func switchLangugeDidChange(_ switchh: UISwitch) {
+        onTapped?(switchh)
+//        let mainVC = MainViewController()
+//        AppDelegate.appDelegate.window?.rootViewController = nil
+//        AppDelegate.appDelegate.window?.rootViewController = mainVC
+//        AppDelegate.appDelegate.window?.makeKeyAndVisible()
+//        if let path = Bundle.main.path(forResource: langPreix, ofType: "lproj") {
+//            let bundle = Bundle(path: path)
+//            if let delegate : AppDelegate = UIApplication.shared.delegate as? AppDelegate {
+//                let storyboard = UIStoryboard(name: "Main", bundle: bundle)
+//                delegate.window?.rootViewController = (storyboard.instantiateInitialViewController())
+//            }
+//        }
+    }
+
+    func resetLocalization() {
+        bundle = Bundle.main
+    }
+
+//    let valueTextField: UITextField = {
+//        let valueTextField = UITextField()
+//        valueTextField.textAlignment = .right
+//        valueTextField.isEnabled = false
+//        valueTextField.font = UIFont.preferredFont(forTextStyle: .body)
+//        valueTextField.adjustsFontForContentSizeCategory = true
+//        valueTextField.autocapitalizationType = .none
+//        valueTextField.autocorrectionType = .no
+//        valueTextField.spellCheckingType = .no
+//        if #available(iOS 13.0, *) {
+//            valueTextField.textColor = .secondaryLabel
+//        } else {
+//            valueTextField.textColor = .gray
+//        }
+//        return valueTextField
+//    }()
+
+    var copyableGesture = true
+
+    var key: String {
+        get { return keyLabel.text ?? "" }
+        set(value) { keyLabel.text = value }
+    }
+
+    var secondKey: String {
+        get { return secondKeyLabel.text ?? "" }
+        set(value) { secondKeyLabel.text = value }
+    }
+//    var value: String {
+//        get { return valueTextField.text ?? "" }
+//        set(value) { valueTextField.text = value }
+//    }
+//    var placeholderText: String {
+//        get { return valueTextField.placeholder ?? "" }
+//        set(value) { valueTextField.placeholder = value }
+//    }
+//    var keyboardType: UIKeyboardType {
+//        get { return valueTextField.keyboardType }
+//        set(value) { valueTextField.keyboardType = value }
+//    }
+
+    var isValueValid = true {
+        didSet {
+            if #available(iOS 13.0, *) {
+                if isValueValid {
+                    keyLabel.textColor = .label
+                } else {
+                    keyLabel.textColor = .systemRed
+                }
+            } else {
+                if isValueValid {
+                    keyLabel.textColor = .black
+                } else {
+                    keyLabel.textColor = .red
+                }
+            }
+        }
+    }
+
+    var isSecondValueValid = true {
+        didSet {
+            if #available(iOS 13.0, *) {
+                if isSecondValueValid {
+                    secondKeyLabel.textColor = .label
+                } else {
+                    secondKeyLabel.textColor = .systemRed
+                }
+            } else {
+                if isSecondValueValid {
+                    secondKeyLabel.textColor = .black
+                } else {
+                    secondKeyLabel.textColor = .red
+                }
+            }
+        }
+    }
+
+    var isStackedHorizontally = false
+    var isStackedVertically = false
+    var contentSizeBasedConstraints = [NSLayoutConstraint]()
+
+    var onValueChanged: ((String, String) -> Void)?
+    var onValueBeingEdited: ((String) -> Void)?
+
+    var observationToken: AnyObject?
+
+    private var textFieldValueOnBeginEditing: String = ""
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        contentView.addSubview(keyLabel)
+        contentView.addSubview(secondKeyLabel)
+        contentView.addSubview(languageSwitch)
+        contentView.addSubview(secondLanguageSwitch)
+
+        keyLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            keyLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+//            keyLabel.topAnchor.constraint(equalToSystemSpacingBelow: contentView.layoutMarginsGuide.topAnchor, multiplier: 0.5)
+            keyLabel.centerYAnchor.constraint(equalTo: languageSwitch.centerYAnchor, constant: 0)
+        ])
+
+//        contentView.addSubview(secondKeyLabel)
+        secondKeyLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondKeyLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+//            secondKeyLabel.topAnchor.constraint(equalToSystemSpacingBelow: keyLabel.layoutMarginsGuide.bottomAnchor, multiplier: 0.5)
+//            secondKeyLabel.topAnchor.constraint(equalToSystemSpacingBelow: secondLanguageSwitch.layoutMarginsGuide.bottomAnchor, multiplier: 0.5)
+            secondKeyLabel.centerYAnchor.constraint(equalTo: secondLanguageSwitch.centerYAnchor, constant: 0)
+        ])
+
+//        contentView.addSubview(languageSwitch)
+        languageSwitch.addTarget(self, action: #selector(switchLangugeDidChange(_:)), for: .valueChanged)
+        languageSwitch.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            languageSwitch.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+//            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: languageSwitch.bottomAnchor, multiplier: 0.5)
+//            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: languageSwitch.bottomAnchor, multiplier: 4)
+            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: secondLanguageSwitch.bottomAnchor, multiplier: 1)
+//            languageSwitch.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: secondLanguageSwitch.topAnchor, multiplier: 2)
+        ])
+        languageSwitch.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
+//        contentView.addSubview(secondLanguageSwitch)
+        secondLanguageSwitch.addTarget(self, action: #selector(switchLangugeDidChange(_:)), for: .valueChanged)
+        secondLanguageSwitch.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            secondLanguageSwitch.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: secondLanguageSwitch.bottomAnchor, multiplier: 1)
+        ])
+        secondLanguageSwitch.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
+
+
+//        valueTextField.delegate = self
+//        valueLabelScrollView.addSubview(valueTextField)
+//        valueTextField.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            valueTextField.leadingAnchor.constraint(equalTo: valueLabelScrollView.contentLayoutGuide.leadingAnchor),
+//            valueTextField.topAnchor.constraint(equalTo: valueLabelScrollView.contentLayoutGuide.topAnchor),
+//            valueTextField.bottomAnchor.constraint(equalTo: valueLabelScrollView.contentLayoutGuide.bottomAnchor),
+//            valueTextField.trailingAnchor.constraint(equalTo: valueLabelScrollView.contentLayoutGuide.trailingAnchor),
+//            valueTextField.heightAnchor.constraint(equalTo: valueLabelScrollView.heightAnchor)
+//        ])
+//        let expandToFitValueLabelConstraint = NSLayoutConstraint(item: valueTextField, attribute: .width, relatedBy: .equal, toItem: valueLabelScrollView, attribute: .width, multiplier: 1, constant: 0)
+//        expandToFitValueLabelConstraint.priority = .defaultLow + 1
+//        expandToFitValueLabelConstraint.isActive = true
+//
+//        contentView.addSubview(valueLabelScrollView)
+//
+//        contentView.addSubview(valueLabelScrollView)
+//        valueLabelScrollView.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            valueLabelScrollView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
+//            contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: valueLabelScrollView.bottomAnchor, multiplier: 0.5)
+//        ])
+
+        keyLabel.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
+        keyLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+
+        secondKeyLabel.setContentCompressionResistancePriority(.defaultHigh + 1, for: .horizontal)
+        secondKeyLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+//        valueLabelScrollView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        addGestureRecognizer(gestureRecognizer)
+        isUserInteractionEnabled = true
+
+        configureForContentSize()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configureForContentSize() {
+        var constraints = [NSLayoutConstraint]()
+        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory {
+            // Stack vertically
+            if !isStackedVertically {
+                constraints = [
+//                    valueLabelScrollView.topAnchor.constraint(equalToSystemSpacingBelow: keyLabel.bottomAnchor, multiplier: 0.5),
+//                    valueLabelScrollView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+                    languageSwitch.topAnchor.constraint(equalToSystemSpacingBelow: keyLabel.bottomAnchor, multiplier: 0.5),
+                    languageSwitch.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+                    secondLanguageSwitch.topAnchor.constraint(equalTo: languageSwitch.bottomAnchor, constant: 10),
+//                    secondLanguageSwitch.topAnchor.constraint(equalToSystemSpacingBelow: languageSwitch.bottomAnchor, multiplier: 1),
+                    secondLanguageSwitch.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+                    secondKeyLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
+                ]
+                isStackedVertically = true
+                isStackedHorizontally = false
+            }
+        } else {
+            // Stack horizontally
+            if !isStackedHorizontally {
+                constraints = [
+//                    contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: secondKeyLabel.bottomAnchor, multiplier: 1),
+//                    contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: secondLanguageSwitch.bottomAnchor, multiplier: 1),
+//                    contentView.layoutMarginsGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: secondKeyLabel.bottomAnchor, multiplier: 0.5),
+                    languageSwitch.leadingAnchor.constraint(equalToSystemSpacingAfter: keyLabel.trailingAnchor, multiplier: 1),
+                    languageSwitch.topAnchor.constraint(equalToSystemSpacingBelow: contentView.layoutMarginsGuide.topAnchor, multiplier: 0.5),
+//                    secondLanguageSwitch.leadingAnchor.constraint(equalToSystemSpacingAfter: secondKeyLabel.trailingAnchor, multiplier: 1),
+                    secondLanguageSwitch.leadingAnchor.constraint(equalToSystemSpacingAfter: keyLabel.trailingAnchor, multiplier: 1),
+                    secondLanguageSwitch.topAnchor.constraint(equalTo: languageSwitch.bottomAnchor, constant: 10)
+//                    secondLanguageSwitch.topAnchor.constraint(equalToSystemSpacingBelow: languageSwitch.layoutMarginsGuide.topAnchor, multiplier: 1)
+//                    valueLabelScrollView.leadingAnchor.constraint(equalToSystemSpacingAfter: keyLabel.trailingAnchor, multiplier: 1),
+//                    valueLabelScrollView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.layoutMarginsGuide.topAnchor, multiplier: 0.5)
+                ]
+                isStackedHorizontally = true
+                isStackedVertically = false
+            }
+        }
+        if !constraints.isEmpty {
+            NSLayoutConstraint.deactivate(contentSizeBasedConstraints)
+            NSLayoutConstraint.activate(constraints)
+            contentSizeBasedConstraints = constraints
+        }
+    }
+
+    @objc func handleTapGesture(_ recognizer: UIGestureRecognizer) {
+        if !copyableGesture {
+            return
+        }
+        guard recognizer.state == .recognized else { return }
+
+        if let recognizerView = recognizer.view,
+            let recognizerSuperView = recognizerView.superview, recognizerView.becomeFirstResponder() {
+            let menuController = UIMenuController.shared
+            menuController.setTargetRect(detailTextLabel?.frame ?? recognizerView.frame, in: detailTextLabel?.superview ?? recognizerSuperView)
+            menuController.setMenuVisible(true, animated: true)
+        }
+    }
+
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return (action == #selector(UIResponderStandardEditActions.copy(_:)))
+    }
+
+    override func copy(_ sender: Any?) {
+//        UIPasteboard.general.string = valueTextField.text
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        copyableGesture = true
+//        placeholderText = ""
+        isValueValid = true
+        isSecondValueValid = true
+//        keyboardType = .default
+        onValueChanged = nil
+        onValueBeingEdited = nil
+        observationToken = nil
+        key = ""
+//        value = ""
+        configureForContentSize()
+    }
+}
+
+extension LanguageValueCell: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textFieldValueOnBeginEditing = textField.text ?? ""
+        isValueValid = true
+        isSecondValueValid = true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let isModified = textField.text ?? "" != textFieldValueOnBeginEditing
+        guard isModified else { return }
+        onValueChanged?(textFieldValueOnBeginEditing, textField.text ?? "")
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let onValueBeingEdited = onValueBeingEdited {
+            let modifiedText = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+            onValueBeingEdited(modifiedText)
+        }
+        return true
+    }
+
+}
+
+#endif

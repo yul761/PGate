@@ -1,0 +1,457 @@
+// SPDX-License-Identifier: MIT
+// Copyright © 2018-2019 PGate LLC. All Rights Reserved.
+
+// Generic alert action names
+
+"actionOK" = "确认";
+"actionCancel" = "取消";
+"actionSave" = "保存";
+
+// Tunnels list UI
+
+"tunnelsListTitle" = "PGate";
+"tunnelsListSettingsButtonTitle" = "设置";
+"tunnelsListCenteredAddTunnelButtonTitle" = "添加隧道";
+"tunnelsListSwipeDeleteButtonTitle" = "删除";
+"tunnelsListSelectButtonTitle" = "选择";
+"tunnelsListSelectAllButtonTitle" = "全选";
+"tunnelsListDeleteButtonTitle" = "删除";
+"tunnelsListSelectedTitle (%d)" = "%d 已选择";
+
+// Tunnels list menu
+
+"addTunnelMenuHeader" = "添加一个新的PGate隧道";
+"addTunnelMenuImportFile" = "从文件或者档案创建";
+"addTunnelMenuQRCode" = "扫描二维码创建";
+"addTunnelMenuFromScratch" = "从初始设置创建";
+
+// Tunnels list alerts
+
+"alertImportedFromMultipleFilesTitle (%d)" = "创建 %d 隧道";
+"alertImportedFromMultipleFilesMessage (%1$d of %2$d)" = "已从导入文件中创建 %2$d 个隧道中的 %1$d个";
+
+"alertImportedFromZipTitle (%d)" = "已创建 %d 隧道";
+"alertImportedFromZipMessage (%1$d of %2$d)" = "已从压缩文件中创建 %2$d 个隧道中的 %1$d个";
+
+"alertBadConfigImportTitle" = "无法导入隧道";
+"alertBadConfigImportMessage (%@)" = "文件 ‘%@’ 不包含一个有效的 PGate 配置";
+
+"deleteTunnelsConfirmationAlertButtonTitle" = "删除";
+"deleteTunnelConfirmationAlertButtonMessage (%d)" = "确认删除 %d 隧道?";
+"deleteTunnelsConfirmationAlertButtonMessage (%d)" = "确认删除 %d 隧道?";
+
+// Tunnel detail and edit UI
+
+"newTunnelViewTitle" = "新配置";
+"editTunnelViewTitle" = "编辑配置";
+
+"tunnelSectionTitleStatus" = "状态";
+
+"tunnelStatusInactive" = "未激活";
+"tunnelStatusActivating" = "激活中";
+"tunnelStatusActive" = "已激活";
+"tunnelStatusDeactivating" = "解除激活中";
+"tunnelStatusReasserting" = "重新激活中";
+"tunnelStatusRestarting" = "重启中";
+"tunnelStatusWaiting" = "加载中";
+
+"macToggleStatusButtonActivate" = "激活";
+"macToggleStatusButtonActivating" = "激活中…";
+"macToggleStatusButtonDeactivate" = "解除激活";
+"macToggleStatusButtonDeactivating" = "解除激活中…";
+"macToggleStatusButtonReasserting" = "重新激活中…";
+"macToggleStatusButtonRestarting" = "重启中…";
+"macToggleStatusButtonWaiting" = "加载中…";
+
+"tunnelSectionTitleInterface" = "接口";
+
+"tunnelInterfaceName" = "名称";
+"tunnelInterfacePrivateKey" = "私钥";
+"tunnelInterfacePublicKey" = "公钥";
+"tunnelInterfaceGenerateKeypair" = "生成密钥对";
+"tunnelInterfaceAddresses" = "地址";
+"tunnelInterfaceListenPort" = "监听端口";
+"tunnelInterfaceMTU" = "MTU";
+"tunnelInterfaceDNS" = "DNS 服务器";
+"tunnelInterfaceStatus" = "状态";
+
+"tunnelSectionTitlePeer" = "同伴";
+
+"tunnelPeerPublicKey" = "公钥";
+"tunnelPeerPreSharedKey" = "预共享密钥";
+"tunnelPeerEndpoint" = "端点";
+"tunnelPeerPersistentKeepalive" = "持久保持活跃";
+"tunnelPeerAllowedIPs" = "允许的 IPs";
+"tunnelPeerRxBytes" = "已接收数据";
+"tunnelPeerTxBytes" = "已发送数据";
+"tunnelPeerLastHandshakeTime" = "最近一次握手";
+"tunnelPeerExcludePrivateIPs" = "排除私有的IP";
+
+"tunnelSectionTitleOnDemand" = "按需激活";
+
+"tunnelOnDemandCellular" = "蜂窝电话";
+"tunnelOnDemandEthernet" = "以太网";
+"tunnelOnDemandWiFi" = "Wi-Fi";
+"tunnelOnDemandSSIDsKey" = "SSIDs";
+
+"tunnelOnDemandAnySSID" = "任何 SSID";
+"tunnelOnDemandOnlyTheseSSIDs" = "只有这些 SSIDs";
+"tunnelOnDemandExceptTheseSSIDs" = "排除这些 SSIDs";
+"tunnelOnDemandOnlySSID (%d)" = "只有 %d SSID";
+"tunnelOnDemandOnlySSIDs (%d)" = "之后 %d SSIDs";
+"tunnelOnDemandExceptSSID (%d)" = "排除 %d SSID";
+"tunnelOnDemandExceptSSIDs (%d)" = "排除 %d SSIDs";
+"tunnelOnDemandSSIDOptionDescriptionMac (%1$@: %2$@)" = "%1$@: %2$@";
+
+"tunnelOnDemandSSIDViewTitle" = "SSIDs";
+"tunnelOnDemandSectionTitleSelectedSSIDs" = "SSIDs";
+"tunnelOnDemandNoSSIDs" = "没有 SSIDs";
+"tunnelOnDemandSectionTitleAddSSIDs" = "添加 SSIDs";
+"tunnelOnDemandAddMessageAddConnectedSSID (%@)" = "添加已连接: %@";
+"tunnelOnDemandAddMessageAddNewSSID" = "新添加";
+
+"tunnelOnDemandKey" = "按需";
+"tunnelOnDemandOptionOff" = "关闭";
+"tunnelOnDemandOptionWiFiOnly" = "只有Wi-Fi";
+"tunnelOnDemandOptionWiFiOrCellular" = "Wi-Fi 或者 蜂窝网络";
+"tunnelOnDemandOptionCellularOnly" = "只限蜂窝网络";
+"tunnelOnDemandOptionWiFiOrEthernet" = "Wi-Fi 或者 以太网";
+"tunnelOnDemandOptionEthernetOnly" = "只限以太网";
+
+"addPeerButtonTitle" = "添加同伴";
+
+"deletePeerButtonTitle" = "删除同伴";
+"deletePeerConfirmationAlertButtonTitle" = "删除";
+"deletePeerConfirmationAlertMessage" = "要删除这个同伴吗";
+
+"deleteTunnelButtonTitle" = "删除隧道";
+"deleteTunnelConfirmationAlertButtonTitle" = "删除";
+"deleteTunnelConfirmationAlertMessage" = "要删除这个隧道吗？";
+
+"tunnelEditPlaceholderTextRequired" = "需要";
+"tunnelEditPlaceholderTextOptional" = "可选";
+"tunnelEditPlaceholderTextAutomatic" = "自动";
+"tunnelEditPlaceholderTextStronglyRecommended" = "强烈推荐";
+"tunnelEditPlaceholderTextOff" = "关闭";
+
+"tunnelPeerPersistentKeepaliveValue (%@)" = "每 %@ 秒";
+"tunnelHandshakeTimestampNow" = "现在";
+"tunnelHandshakeTimestampSystemClockBackward" = "(系统时钟倒退)";
+"tunnelHandshakeTimestampAgo (%@)" = "%@ 之前";
+"tunnelHandshakeTimestampYear (%d)" = "%d 年";
+"tunnelHandshakeTimestampYears (%d)" = "%d 年";
+"tunnelHandshakeTimestampDay (%d)" = "%d 天";
+"tunnelHandshakeTimestampDays (%d)" = "%d 天";
+"tunnelHandshakeTimestampHour (%d)" = "%d 小时";
+"tunnelHandshakeTimestampHours (%d)" = "%d 小时";
+"tunnelHandshakeTimestampMinute (%d)" = "%d 分";
+"tunnelHandshakeTimestampMinutes (%d)" = "%d 分";
+"tunnelHandshakeTimestampSecond (%d)" = "%d 秒";
+"tunnelHandshakeTimestampSeconds (%d)" = "%d 秒";
+
+"tunnelHandshakeTimestampHours hh:mm:ss (%@)" = "%@ 小时";
+"tunnelHandshakeTimestampMinutes mm:ss (%@)" = "%@ 分";
+
+"tunnelPeerPresharedKeyEnabled" = "已启用";
+
+// Error alerts while creating / editing a tunnel configuration
+
+/* Alert title for error in the interface data */
+"alertInvalidInterfaceTitle" = "无效的接口";
+
+/* Any one of the following alert messages can go with the above title */
+"alertInvalidInterfaceMessageNameRequired" = "接口的名称是必要的";
+"alertInvalidInterfaceMessagePrivateKeyRequired" = "界面的私钥是必要的";
+"alertInvalidInterfaceMessagePrivateKeyInvalid" = "界面的私钥必须是一个base64编码的32字节密钥";
+"alertInvalidInterfaceMessageAddressInvalid" = "接口地址必须是逗号分隔的IP地址的列表，可以选择使用CIDR表示法";
+"alertInvalidInterfaceMessageListenPortInvalid" = "接口的监听端口必须在0到65535之间，或者未指定";
+"alertInvalidInterfaceMessageMTUInvalid" = "接口的MTU必须介于576和65535之间，或者未指定";
+"alertInvalidInterfaceMessageDNSInvalid" = "接口的DNS服务器必须是用逗号分隔的IP地址的列表";
+
+/* Alert title for error in the peer data */
+"alertInvalidPeerTitle" = "无效的同伴";
+
+/* Any one of the following alert messages can go with the above title */
+"alertInvalidPeerMessagePublicKeyRequired" = "需要同伴的公钥";
+"alertInvalidPeerMessagePublicKeyInvalid" = "同伴的公共密钥必须是base64编码的32字节密钥";
+"alertInvalidPeerMessagePreSharedKeyInvalid" = "同伴的预共享密钥必须是base64编码的32字节密钥";
+"alertInvalidPeerMessageAllowedIPsInvalid" = "同伴允许的IP必须是用逗号分隔的IP地址列表，可以选择使用CIDR表示法";
+"alertInvalidPeerMessageEndpointInvalid" = "同伴端点必须采用“ host：port”或“ [host]：port”的形式";
+"alertInvalidPeerMessagePersistentKeepaliveInvalid" = "同伴的持久性Keepalive必须介于0到65535之间，或者未指定";
+"alertInvalidPeerMessagePublicKeyDuplicated" = "两个或多个同伴不能具有相同的公共密钥";
+
+// Scanning QR code UI
+
+"scanQRCodeViewTitle" = "扫描二维码";
+"scanQRCodeTipText" = "提示：使用`qrencode -t ansiutf8 <tunnel.conf`生成";
+
+// Scanning QR code alerts
+
+"alertScanQRCodeCameraUnsupportedTitle" = "相机不支持";
+"alertScanQRCodeCameraUnsupportedMessage" = "该设备无法扫描QR码";
+
+"alertScanQRCodeInvalidQRCodeTitle" = "无效的二维码";
+"alertScanQRCodeInvalidQRCodeMessage" = "扫描的二维码不是有效的PGate配置";
+
+"alertScanQRCodeUnreadableQRCodeTitle" = "无效的二维码";
+"alertScanQRCodeUnreadableQRCodeMessage" = "无法读取扫描的二维码";
+
+"alertScanQRCodeNamePromptTitle" = "请命名扫描隧道";
+
+// Settings UI
+
+"settingsViewTitle" = "设置";
+
+"Alert" = "提醒";//"警报";
+"applyLanguage" = "您需要切换到其他语言吗？";//"你想申请吗？";
+"restartApp" = "请重启应用令新语言生效";//"请重新启动应用以应用语言更改";
+"Yes" = "是";
+"No" = "否";//"没有";
+"Ok" = "好";
+"settingsSectionTitleLanguage" = "语言";
+"settingsSectionTitleLanguageNameEnglish" = "English";//"英语";//"中文";
+"settingsSectionTitleLanguageNameChinese" = "中文";
+
+"settingsSectionTitleAbout" = "关于";
+"settingsVersionKeyWireGuardForIOS" = "PGate iOS 应用";
+"settingsVersionKeyWireGuardGoBackend" = "PGate Go 后端";
+
+"settingsSectionTitleExportConfigurations" = "导出配置";
+"settingsExportZipButtonTitle" = "导出zip存档";
+
+"settingsSectionTitleTunnelLog" = "日志";
+"settingsViewLogButtonTitle" = "浏览日志";
+
+// Log view
+
+"logViewTitle" = "日志";
+
+// Log alerts
+
+"alertUnableToRemovePreviousLogTitle" = "日志导出失败";
+"alertUnableToRemovePreviousLogMessage" = "已存在的日志无法清除";
+
+"alertUnableToWriteLogTitle" = "日志导出失败";
+"alertUnableToWriteLogMessage" = "无法将日志写入文件";
+
+// Zip import / export error alerts
+
+"alertCantOpenInputZipFileTitle" = "无法读取zip存档";
+"alertCantOpenInputZipFileMessage" = "无法读取zip存档。";
+
+"alertCantOpenOutputZipFileForWritingTitle" = "无法创建zip存档";
+"alertCantOpenOutputZipFileForWritingMessage" = "无法打开zip文件进行写入。";
+
+"alertBadArchiveTitle" = "无法读取zip存档";
+"alertBadArchiveMessage" = "zip归档文件损坏。";
+
+"alertNoTunnelsToExportTitle" = "没有隧道可以导出";
+"alertNoTunnelsToExportMessage" = "没有隧道可以导出";
+
+"alertNoTunnelsInImportedZipArchiveTitle" = "zip存档中没有隧道";
+"alertNoTunnelsInImportedZipArchiveMessage" = "在zip存档中找不到.conf隧道文件。";
+
+// Conf import error alerts
+
+"alertCantOpenInputConfFileTitle" = "无法从文件导入";
+"alertCantOpenInputConfFileMessage (%@)" = "‘%@’ 无法读取";
+
+// Tunnel management error alerts
+
+"alertTunnelActivationFailureTitle" = "激活失败";
+"alertTunnelActivationFailureMessage" = "无法激活隧道。 请确保您已连接到网络。";
+"alertTunnelActivationSavedConfigFailureMessage" = "无法从已保存的配置中检索隧道信息。";
+"alertTunnelActivationBackendFailureMessage" = "无法打开Go后端库。";
+"alertTunnelActivationFileDescriptorFailureMessage" = "无法确定TUN设备文件描述符。";
+"alertTunnelActivationSetNetworkSettingsMessage" = "无法将网络设置应用于隧道对象。";
+
+"alertTunnelActivationFailureOnDemandAddendum" = " 该隧道已启用“按需激活”，因此操作系统可能会自动重新激活该隧道。 您可以通过编辑隧道配置来关闭此应用程序中的按需激活。";
+
+"alertTunnelDNSFailureTitle" = "DNS解析失败";
+"alertTunnelDNSFailureMessage" = "一个或多个端点域无法解析。";
+
+"alertTunnelNameEmptyTitle" = "没有提供名字";
+"alertTunnelNameEmptyMessage" = "无法使用空名称创建隧道";
+
+"alertTunnelAlreadyExistsWithThatNameTitle" = "名称已存在";
+"alertTunnelAlreadyExistsWithThatNameMessage" = "具有该名称的隧道已存在";
+
+"alertTunnelActivationErrorTunnelIsNotInactiveTitle" = "激活中";
+"alertTunnelActivationErrorTunnelIsNotInactiveMessage" = "隧道已处于活动状态或正在被激活";
+
+// Tunnel management error alerts on system error
+
+/* The alert message that goes with the following titles would be
+   one of the alertSystemErrorMessage* listed further down */
+"alertSystemErrorOnListingTunnelsTitle" = "无法列出隧道";
+"alertSystemErrorOnAddTunnelTitle" = "无法创建隧道";
+"alertSystemErrorOnModifyTunnelTitle" = "无法修改隧道";
+"alertSystemErrorOnRemoveTunnelTitle" = "无法删除隧道";
+
+/* The alert message for this alert shall include
+ one of the alertSystemErrorMessage* listed further down */
+"alertTunnelActivationSystemErrorTitle" = "激活失败";
+"alertTunnelActivationSystemErrorMessage (%@)" = "无法激活隧道。 %@";
+
+/* alertSystemErrorMessage* messages */
+"alertSystemErrorMessageTunnelConfigurationInvalid" = "配置无效。";
+"alertSystemErrorMessageTunnelConfigurationDisabled" = "配置已禁用。";
+"alertSystemErrorMessageTunnelConnectionFailed" = "连接失败。";
+"alertSystemErrorMessageTunnelConfigurationStale" = "配置已过时。";
+"alertSystemErrorMessageTunnelConfigurationReadWriteFailed" = "读取或写入配置失败。";
+"alertSystemErrorMessageTunnelConfigurationUnknown" = "未知的系统错误。";
+
+// Mac status bar menu / pulldown menu / main menu
+
+"macMenuNetworks (%@)" = "网络: %@";
+"macMenuNetworksNone" = "网络：无";
+
+"macMenuTitle" = "PGate";
+"macMenuManageTunnels" = "管理隧道";
+"macMenuImportTunnels" = "从文件导入隧道…";
+"macMenuAddEmptyTunnel" = "添加空隧道…";
+"macMenuViewLog" = "查看日志";
+"macMenuExportTunnels" = "将隧道导出到Zip…";
+"macMenuChangeLanguage" = "切换为英文界面";//"转换成英语";
+"macMenuQuitpGate" = "令全新语言选择生效您需要重启PGate";//"您需要退出PGate以反映语言更改";
+"macMenuAbout" = "关于 PGate";
+"macMenuQuit" = "退出 PGate";
+
+"macMenuHideApp" = "隐藏 PGate";
+"macMenuHideOtherApps" = "隐藏其他";
+"macMenuShowAllApps" = "显示所有";
+
+"macMenuFile" = "文件";
+"macMenuCloseWindow" = "关闭窗口";
+
+"macMenuEdit" = "编辑";
+"macMenuCut" = "剪切";
+"macMenuCopy" = "复制";
+"macMenuPaste" = "粘贴";
+"macMenuSelectAll" = "全选";
+
+"macMenuTunnel" = "隧道";
+"macMenuToggleStatus" = "切换状态";
+"macMenuEditTunnel" = "编辑…";
+"macMenuDeleteSelected" = "删除所选";
+
+"macMenuWindow" = "窗口";
+"macMenuMinimize" = "最小化";
+"macMenuZoom" = "放大";
+
+// Mac manage tunnels window
+
+"macWindowTitleManageTunnels" = "管理PGate隧道";
+
+"macDeleteTunnelConfirmationAlertMessage (%@)" = "你确定想要删除 ‘%@’ 吗?";
+"macDeleteMultipleTunnelsConfirmationAlertMessage (%d)" = "你确定想要删除 %d 隧道吗?";
+"macDeleteTunnelConfirmationAlertInfo" = "您无法撤消此操作。";
+"macDeleteTunnelConfirmationAlertButtonTitleDelete" = "删除";
+"macDeleteTunnelConfirmationAlertButtonTitleCancel" = "取消";
+"macDeleteTunnelConfirmationAlertButtonTitleDeleting" = "删除中…";
+
+"macButtonImportTunnels" = "从文件导入隧道";
+"macSheetButtonImport" = "导入";
+
+"macNameFieldExportLog" = "将日志保存到：";
+"macSheetButtonExportLog" = "保存";
+
+"macNameFieldExportZip" = "将隧道导出到：";
+"macSheetButtonExportZip" = "保存";
+
+"macButtonDeleteTunnels (%d)" = "删除 %d 隧道";
+
+"macButtonEdit" = "编辑";
+
+// Mac detail/edit view fields
+
+"macFieldKey (%@)" = "%@:";
+"macFieldOnDemand" = "按需:";
+"macFieldOnDemandSSIDs" = "SSIDs:";
+
+// Mac status display
+
+"macStatus (%@)" = "状态: %@";
+
+// Mac editing config
+
+"macEditDiscard" = "舍弃";
+"macEditSave" = "保存";
+
+"macAlertNameIsEmpty" = "名称为必填项";
+"macAlertDuplicateName (%@)" = "已经存在另一个隧道，名称为 ‘%@’.";
+
+"macAlertInvalidLine (%@)" = "无效的行: ‘%@’.";
+
+"macAlertNoInterface" = "配置中必须有一个“接口”部分。";
+"macAlertMultipleInterfaces" = "配置必须只有一个“接口”部分。";
+"macAlertPrivateKeyInvalid" = "私钥无效。";
+"macAlertListenPortInvalid (%@)" = "监听端口 ‘%@’ 无效。";
+"macAlertAddressInvalid (%@)" = "地址 ‘%@’ 无效.";
+"macAlertDNSInvalid (%@)" = "DNS ‘%@’ 无效";
+"macAlertMTUInvalid (%@)" = "MTU ‘%@’ 无效.";
+
+"macAlertUnrecognizedInterfaceKey (%@)" = "界面包含无法识别的密钥 ‘%@’";
+"macAlertInfoUnrecognizedInterfaceKey" = "有效密钥为: ‘私钥’, ‘监听端口’, ‘地址’, ‘DNS’ 和 ‘MTU’.";
+
+"macAlertPublicKeyInvalid" = "公钥无效";
+"macAlertPreSharedKeyInvalid" = "预共享密钥无效";
+"macAlertAllowedIPInvalid (%@)" = "允许的 IP ‘%@’ 无效";
+"macAlertEndpointInvalid (%@)" = "端点 ‘%@’ 无效";
+"macAlertPersistentKeepliveInvalid (%@)" = "持久保持激活价值 ‘%@’ 无效";
+
+"macAlertUnrecognizedPeerKey (%@)" = "同伴包含无法识别的密钥 ‘%@’";
+"macAlertInfoUnrecognizedPeerKey" = "有效的密钥: ‘公钥’, ‘预共享密钥’, ‘允许的IP’, ‘端点’ 和 ‘持久保持激活价值’";
+
+"macAlertMultipleEntriesForKey (%@)" = " ‘%@’ 密钥的每个部分应只有一个条目 ";
+
+// Mac about dialog
+
+"macAppVersion (%@)" = "应用版本： %@";
+"macGoBackendVersion (%@)" = "Go 后端版本： %@";
+
+// Privacy
+
+"macExportPrivateData" = "导出隧道私钥";
+"macViewPrivateData" = "查看隧道私钥";
+"iosExportPrivateData" = "进行身份验证以导出隧道私钥。";
+"iosViewPrivateData" = "进行身份验证以查看隧道私钥。";
+
+// Mac alert
+
+"macConfirmAndQuitAlertMessage" = "您要关闭隧道管理器还是完全退出PGate？";
+"macConfirmAndQuitAlertInfo" = "如果关闭隧道管理器，则菜单栏图标将继续显示PGate。";
+"macConfirmAndQuitInfoWithActiveTunnel (%@)" = "如果关闭隧道管理器，则菜单栏图标将继续显示PGate。\n\n请注意，如果您完全退出PGate，则当前活动的隧道 ('%@') 在您从此应用程序或通过“系统偏好设置”中的“网络”面板停用它之前，将一直保持活动状态。";
+"macConfirmAndQuitAlertQuitWireGuard" = "退出 PGate";
+"macConfirmAndQuitAlertCloseWindow" = "关闭隧道管理器";
+
+"macAppExitingWithActiveTunnelMessage" = "PGate正在使用一个活动隧道退出";
+"macAppExitingWithActiveTunnelInfo" = "退出后，隧道将保持活动状态。 您可以通过重新打开此应用程序或通过“系统偏好设置”中的“网络”面板来禁用它。";
+
+// Mac tooltip
+
+"macToolTipEditTunnel" = "编辑隧道 (⌘E)";
+"macToolTipToggleStatus" = "切换状态 (⌘T)";
+
+// Mac log view
+
+"macLogColumnTitleTime" = "时间";
+"macLogColumnTitleLogMessage" = "日志信息";
+"macLogButtonTitleClose" = "关闭";
+"macLogButtonTitleSave" = "保存…";
+
+// Mac unusable tunnel view
+
+"macUnusableTunnelMessage" = "在密钥串中找不到此隧道的配置。";
+"macUnusableTunnelInfo" = "如果此隧道是由另一个用户创建的，则只有该用户才能查看，编辑或激活该隧道。";
+"macUnusableTunnelButtonTitleDeleteTunnel" = "删除隧道";
+
+// Mac App Store updating alert
+
+"macAppStoreUpdatingAlertMessage" = "App Store想要更新PGate";
+"macAppStoreUpdatingAlertInfoWithOnDemand (%@)" = "请禁用隧道 ‘%@’ 的按需, 停用它，然后在App Store中继续更新。";
+"macAppStoreUpdatingAlertInfoWithoutOnDemand (%@)" = "请停用隧道 ‘%@’ 然后继续在App Store中进行更新。";
+
+// Donation
+
+"donateLink" = "♥ 捐赠给PGate项目";

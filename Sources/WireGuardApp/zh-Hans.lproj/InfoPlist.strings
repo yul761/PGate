@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: MIT
+// Copyright © 2018-2020 WireGuard LLC. All Rights Reserved.
+
+// iOS permission prompts
+
+NSCameraUsageDescription = "相机用于扫描QR码以导入PGate配置";
+NSFaceIDUsageDescription = "Face ID用于验证私钥的查看和导出";

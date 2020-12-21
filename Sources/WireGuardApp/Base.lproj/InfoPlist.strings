@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: MIT
+// Copyright © 2018-2020 WireGuard LLC. All Rights Reserved.
+
+// iOS permission prompts
+
+NSCameraUsageDescription = "Camera is used for scanning QR codes for importing PGate configurations";
+NSFaceIDUsageDescription = "Face ID is used for authenticating viewing and exporting of private keys";
